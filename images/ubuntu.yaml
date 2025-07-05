@@ -365,21 +365,25 @@ files:
   generator: cloud-init
   variants:
   - cloud
+  - desktop
 
 - name: network-config
   generator: cloud-init
   variants:
   - cloud
+  - desktop
 
 - name: user-data
   generator: cloud-init
   variants:
   - cloud
+  - desktop
 
 - name: vendor-data
   generator: cloud-init
   variants:
   - cloud
+  - desktop
 
 - name: ext4
   generator: fstab
@@ -439,6 +443,10 @@ packages:
     - openssh-client
     - sudo
     - vim
+    - python3
+    - git
+    - curl
+    - wget
     action: install
 
   - packages:
@@ -462,6 +470,7 @@ packages:
     action: install
     variants:
     - cloud
+    - desktop
 
   - packages:
     - systemd-resolved
@@ -733,6 +742,11 @@ actions:
   - desktop
   types:
   - vm
+
+- trigger: post-packages
+  action: 'echo "policy: enabled" | tee /etc/cloud/ds-identify.cfg'
+  variants:
+    - desktop
 
 mappings:
   architecture_map: debian
