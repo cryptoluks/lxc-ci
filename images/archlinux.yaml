@@ -516,21 +516,25 @@ files:
   generator: cloud-init
   variants:
   - cloud
+  - desktop-gnome
 
 - name: network-config
   generator: cloud-init
   variants:
   - cloud
+  - desktop-gnome
 
 - name: user-data
   generator: cloud-init
   variants:
   - cloud
+  - desktop-gnome
 
 - name: vendor-data
   generator: cloud-init
   variants:
   - cloud
+  - desktop-gnome
 
 - path: /etc/sudoers.d/90-incus
   generator: dump
@@ -586,6 +590,7 @@ packages:
     action: install
     variants:
     - cloud
+    - desktop-gnome
 
   - packages:
     - cloud-guest-utils
@@ -813,6 +818,7 @@ actions:
     systemctl enable cloud-init-main.service cloud-init-local.service cloud-config.service cloud-final.service
   variants:
   - cloud
+  - desktop-gnome
 
 - trigger: post-files
   action: |-
