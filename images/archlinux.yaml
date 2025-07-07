@@ -791,7 +791,7 @@ actions:
     EOF
 
     export XDG_RUNTIME_DIR=/run/user/$(id -u archlinux)
-    sudo -u archlinux -- systemctl --user enable firstboot.service
+    runuser -l archlinux -c 'systemctl --user enable firstboot.service'
   variants:
   - desktop-gnome
   types:
