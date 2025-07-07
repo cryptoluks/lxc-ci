@@ -759,10 +759,10 @@ actions:
     # Disable automatic screensaver lock
     gsettings set org.gnome.desktop.screensaver lock-enabled false
 
-    # Change power button action to poweroff. This will cause the VM to shut down when `lxc stop` is called.
+    # Change power button action to poweroff. This will cause the VM to shut down when "lxc stop" is called.
     gsettings set org.gnome.settings-daemon.plugins.power power-button-action interactive
 
-    # Disable 60-second logout prompt when `lxc stop` is called.
+    # Disable 60-second logout prompt when "lxc stop" is called.
     gsettings set org.gnome.SessionManager logout-prompt false
 
     # Disable welcome tour.
