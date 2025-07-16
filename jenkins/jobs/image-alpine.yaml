@@ -31,6 +31,7 @@
         values:
         - default
         - cloud
+        - tinycloud
 
     builders:
     - shell: |-
@@ -43,9 +44,9 @@
         [ "${ARCH}" = "armhf" ] && ARCH="armv7"
 
         TYPE="container"
-        if [ "${architecture}" = "amd64" ] || [ "${architecture}" = "arm64" ]; then
-            TYPE="container,vm"
-        fi
+        # if [ "${architecture}" = "amd64" ] || [ "${architecture}" = "arm64" ]; then
+        #     TYPE="container,vm"
+        # fi
 
         EXTRA_ARGS=""
         if [ "${release}" = "edge" ]; then
@@ -58,7 +59,7 @@
             -o image.variant=${variant} ${EXTRA_ARGS}
 
     execution-strategy:
-      combination-filter: '!(architecture == "riscv64" && release == "3.19")'
+      combination-filter: '!((architecture == "riscv64" || variant == "tinycloud") && release == "3.19")'
 
     properties:
     - build-discarder:
